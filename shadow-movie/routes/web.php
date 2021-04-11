@@ -31,5 +31,5 @@ Route::resource('/movie', MovieController::class);
 
 
 // * Route Category *
-//Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::resource('/category', CategoryController::class);
 

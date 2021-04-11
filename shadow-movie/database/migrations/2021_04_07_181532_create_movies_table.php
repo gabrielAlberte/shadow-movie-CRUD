@@ -13,6 +13,7 @@ class CreateMoviesTable extends Migration
      */
     public function up()
     {
+        //Schema::disableForeignKeyConstraints();
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');

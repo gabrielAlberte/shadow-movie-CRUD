@@ -4,38 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Category;
 
 class MovieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
+        //SELECT * FROM Movie
         $movies = Movie::all();
-        /*
-        return view('movie/manageMovie', [
-            'movies' => $movies,
-        ]);
-        */
+        
+        //compact crée un tableau associatif, la variable est envoyé a ma vue
         return view('movie.index', compact('movies'));
     }
-  
+
     public function create()
     {
-        return view('movie.create');
-        //return view('movie.createMovie');
-        //return redirect()->route('movie/addMovie');
+        $categories = Category::all();
+        return view('movie.create', compact('categories'));    
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -51,40 +40,16 @@ class MovieController extends Controller
         
         return redirect()->route('movie.index')
             ->with('success', 'Movie created successfully');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+    public function edit(Movie $movie)
     {
-        
+        $categoryMovie = Category::all();
+        return view('movie.edit', compact('movie', 'categoryMovie'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit( Movie $movie)
-    {
-        return view('movie.edit', compact('movie'));
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Movie $movie)
     {
         $request->validate([
@@ -102,12 +67,7 @@ class MovieController extends Controller
             ->with('success', 'Movie update successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Movie $movie)
     {
         $movie->delete();
@@ -115,4 +75,6 @@ class MovieController extends Controller
         return redirect()->route('movie.index')
             ->with('success', 'Movie created successfully');
     }
+
+
 }

@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('name');
             $table->timestamps();
 
             /*
@@ -23,7 +23,7 @@ class CreateCategoriesTable extends Migration
             $table->foreign('movie_id')
                 ->references('id')
                 ->on('movies')
-                ->onUpdate('cascade')
+                ->onUpdate('cascade') //efface aussi le film liée
                 ->onDelete('restrict');
             */
         });

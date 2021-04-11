@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Category;
+use App\Models\Category;
 
 class Movie extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        
         'title',
         'author',
         'description',
@@ -24,7 +25,7 @@ class Movie extends Model
         'updated_at',
     ];
 
-    public function Categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

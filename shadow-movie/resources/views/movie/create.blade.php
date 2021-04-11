@@ -25,6 +25,12 @@
             <label for="category_id">category id:</label><br>
             <input type="text" name="category_id" value="1"><br>
 
+            <select name="category_id">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id  }}">  {{ $category->name  }}</option>
+                @endforeach
+            </select><br><br>
+
 
             <input type="submit" value="create">
         </form> 

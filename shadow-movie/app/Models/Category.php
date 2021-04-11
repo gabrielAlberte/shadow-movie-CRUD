@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Movie;
+use App\Models\Movie;
 
 class Category extends Model
 {
@@ -12,7 +12,7 @@ class Category extends Model
     
     protected $fillable = [
         'id',
-        'type',
+        'name',
     ];
 
     protected $hidden = [
@@ -20,8 +20,9 @@ class Category extends Model
         'updated_at',
     ];
 
-    public function Movies()
+    public function movie()
     {
         return $this->hasMany(Movie::class);
+
     }
 }

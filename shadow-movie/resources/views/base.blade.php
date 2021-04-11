@@ -13,8 +13,8 @@
 
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('movie.index') }}">Movies</a>
+                <a href="{{ route('category.index') }}">Category</a>
                 
-
         </div>
     </header>
 

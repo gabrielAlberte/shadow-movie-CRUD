@@ -14,14 +14,13 @@
             padding-right: 12px;
             padding-top: 12px;
             padding-bottom: 12px;
-        }">
+        }
 
 
  
 </style>
 
     <h1>Liste de film en base de donnée</h1>
-
 
     <div class="center"> 
         <table>
@@ -47,22 +46,16 @@
                     <td>{{ $movie->description }}</td>
                     <td>{{ $movie->language }}</td>
                     <td>{{ $movie->url }}</td>
-                    <td>{{ $movie->category_id }}</td>
+                    <td>{{ $movie->category->name }}</td>
                     <td>
-                      
-                        
                         <form action="{{ route('movie.destroy', $movie->id) }}" method="POST">
 
-                            <a href="{{ route('movie.show', $movie->id) }}" title="show">show</a>
-
-                            <a href="{{ route('movie.edit', $movie->id) }}">update</a>
+                            <a href="{{ route('movie.edit', $movie->id) }}" title="edit">update</a>
                             
                             @csrf
                             @method('DELETE')
                             <button type=submit>delete</button>
                         </form>
-                        
-                    
                     </td>
                 </tr>
             </tbody>

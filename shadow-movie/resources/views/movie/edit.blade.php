@@ -15,7 +15,7 @@
             <input type="text" name="author" value="{{ $movie->author }}"><br>
 
             <label for="description">description:</label><br>
-            <input type="text" name="description" value="{{ $movie->description }}"><br>
+            <textarea type="text" name="description" cols="100">{{ $movie->description }}</textarea><br>
 
             <label for="language">language:</label><br>
             <input type="text"  name="language" value="{{ $movie->language }}"><br>
@@ -24,10 +24,16 @@
             <input type="text" name="url" value="{{ $movie->url }}"><br>
 
             <label for="category_id">category id:</label><br>
-            <input type="text" name="category_id" value="{{ $movie->category_id}}"><br>
+            <select name="category_id">
+                @foreach($categoryMovie as $category)
+                    <option value="{{ $category->id  }}">  {{ $category->name  }}</option>
+                @endforeach
+            </select><br><br>
+            
+            
 
+            <input type="submit" value="Add movie">
 
-            <input type="submit" value="create">
         </form> 
 
     @endsection
